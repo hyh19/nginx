@@ -34,24 +34,37 @@ $ sudo apt-key add nginx_signing.key
 
 For Debian replace codename with Debian distribution codename, and append the following to the end of the `/etc/apt/sources.list` file:
 ```
-deb http://nginx.org/packages/debian/ xenial nginx
-deb-src http://nginx.org/packages/debian/ xenial nginx
+deb http://nginx.org/packages/debian/ codename nginx
+deb-src http://nginx.org/packages/debian/ codename nginx
 ```
 
 For Ubuntu replace codename with Ubuntu distribution codename, and append the following to the end of the `/etc/apt/sources.list` file:
 ```
-## Ubuntu 16.04 ##
-deb http://nginx.org/packages/ubuntu/ xenial nginx
-deb-src http://nginx.org/packages/ubuntu/ xenial nginx
-
-echo 'deb http://nginx.org/packages/ubuntu/ xenial nginx' >> /etc/apt/sources.list
-echo 'deb-src http://nginx.org/packages/ubuntu/ xenial nginx' >> /etc/apt/sources.list
+deb http://nginx.org/packages/ubuntu/ codename nginx
+deb-src http://nginx.org/packages/ubuntu/ codename nginx
 ```
 
 For Debian/Ubuntu then run the following commands:
 ```bash
 $ apt-get update
 $ apt-get install nginx
+```
+
+```bash
+## Debian 7.11 ##
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian7.sh | bash
+
+## Debian 8.9 ##
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian8.sh | bash
+
+## Debian 9.1 ##
+$ wget https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian9.sh && $ sh -x install-nginx-debian9.sh
+
+## Ubuntu 14.04 ##
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1404.sh | bash
+
+## Ubuntu 16.04 ##
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1604.sh | bash
 ```
 
 
