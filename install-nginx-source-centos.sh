@@ -31,4 +31,5 @@ ln -s /usr/local/nginx/nginx-1.12.1 /usr/local/nginx/default
 # 修改环境变量
 echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> ~/.bash_profile
 
+# 提示让环境变量生效
 echo 'Please run the command: source ~/.bash_profile.'
