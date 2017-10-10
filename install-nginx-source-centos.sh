@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# 安装常用开发工具
-yum groupinstall -y 'Development Tools'
+# 安装必要工具
+yum install -y curl tar gcc make
 
 # 安装依赖库
 yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
@@ -13,8 +13,7 @@ mkdir -p /usr/local/nginx
 useradd nginx -s /sbin/nologin -M
 
 # 下载源码包
-yum install -y wget
-wget http://nginx.org/download/nginx-1.12.1.tar.gz
+curl -O http://nginx.org/download/nginx-1.12.1.tar.gz
 
 # 解压源码包
 tar xf nginx-1.12.1.tar.gz
