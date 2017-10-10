@@ -24,3 +24,9 @@ cd nginx-1.12.1
 ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx/nginx-1.12.1 --with-http_stub_status_module --with-http_ssl_module --with-http_ssl_module
 make
 make install
+
+# 创建符号链接
+ln -s /usr/local/nginx/nginx-1.12.1 /usr/local/nginx/default
+
+# 修改环境变量
+echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> ~/.bash_profile
