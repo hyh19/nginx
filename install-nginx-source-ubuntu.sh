@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get update
+
 # 安装必要工具
 apt install -y curl tar gcc make
 
