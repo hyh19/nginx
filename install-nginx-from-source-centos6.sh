@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 安装常用开发工具
-yum group install -y 'Development Tools'
+yum groupinstall -y 'Development Tools'
 
 # 安装依赖库
 yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
