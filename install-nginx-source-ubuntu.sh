@@ -34,3 +34,10 @@ make install
 
 # 创建符号链接
 ln -s /usr/local/nginx/nginx-1.12.1 /usr/local/nginx/default
+
+# 修改 PATH 环境变量
+echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> /etc/profile.d/nginx.sh
+
+# 提示让环境变量生效
+echo -e "Don't forget to run the command:\nsource /etc/profile.d/nginx.sh"
+
