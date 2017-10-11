@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Ubuntu 14.04/16.04 ##
+## Ubuntu 14.04/16.04/17.04 ##
 
 # curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-ubuntu.sh | sh
 
@@ -41,5 +41,6 @@ ln -s /usr/local/nginx/nginx-1.12.1 /usr/local/nginx/default
 echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> /etc/profile.d/nginx.sh
 
 # 提示让环境变量生效
-echo "Don't forget to run the command: source /etc/profile.d/nginx.sh"
+echo "Don't forget to run the command:"
+echo 'source /etc/profile.d/nginx.sh'
 
