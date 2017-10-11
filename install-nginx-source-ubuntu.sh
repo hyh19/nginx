@@ -4,7 +4,7 @@
 apt-get update
 
 # 安装编译工具
-apt-get install build-essential libtool
+apt-get install -y build-essential libtool
 
 # 安装依赖库
 apt install -y libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
