@@ -4,11 +4,14 @@
 
 # curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-yum.sh | sh
 
-# 安装必要工具
-yum install -y curl tar gcc make
+# 安装编译工具
+yum install -y gcc make
 
 # 安装依赖库
 yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
+
+# 安装其他工具
+yum install -y wget tar
 
 # 创建安装文件夹
 mkdir -p /usr/local/nginx
@@ -17,7 +20,7 @@ mkdir -p /usr/local/nginx
 useradd nginx -s /sbin/nologin -M
 
 # 下载源码包
-curl -O http://nginx.org/download/nginx-1.12.1.tar.gz
+wget http://nginx.org/download/nginx-1.12.1.tar.gz
 
 # 解压源码包
 tar xf nginx-1.12.1.tar.gz
