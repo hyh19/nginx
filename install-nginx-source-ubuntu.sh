@@ -1,12 +1,16 @@
 #!/bin/bash
 
+# 更新软件库
 apt-get update
 
-# 安装必要工具
-apt install -y curl tar gcc make
+# 安装编译工具
+apt-get install build-essential libtool
 
 # 安装依赖库
 apt install -y libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
+
+# 安装其他工具
+apt-get -y install curl tar
 
 # 创建安装文件夹
 mkdir -p /usr/local/nginx
