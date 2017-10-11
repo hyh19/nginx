@@ -62,7 +62,7 @@ $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-ngin
 $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian8.sh | bash
 
 ## Debian 9.2 ##
-$ wget https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian9.sh && $ sh install-nginx-debian9.sh
+$ wget https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian9.sh && sh install-nginx-debian9.sh
 
 ## Ubuntu 14.04 ##
 $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1404.sh | bash
