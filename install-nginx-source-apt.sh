@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Debian 7.11/8.9, Ubuntu 14.04/16.04/17.04 ##
+## Debian 7.11/8.9/9.2, Ubuntu 14.04/16.04/17.04 ##
 
 # curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-apt.sh | sh
 
