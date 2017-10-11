@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Ubuntu 16.04 ##
+
 # 更新软件库
 apt-get update
 
