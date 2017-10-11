@@ -11,7 +11,7 @@ apt-get update
 apt-get install -y build-essential libtool
 
 # 安装依赖库
-apt install -y libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
+apt-get install -y libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
 
 # 安装其他工具
 apt-get -y install curl tar
