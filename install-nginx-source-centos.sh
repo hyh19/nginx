@@ -20,7 +20,7 @@ tar xf nginx-1.12.1.tar.gz
 cd nginx-1.12.1
 
 # 开始编译安装
-./configure --user=nginx --group=nginx --prefix=/usr/local/nginx/nginx-1.12.1 --with-http_stub_status_module --with-http_ssl_module --with-http_ssl_module
+./configure --user=nginx --group=nginx --prefix=/usr/local/nginx/nginx-1.12.1 --with-http_stub_status_module --with-http_ssl_module
 make
 make install
 
