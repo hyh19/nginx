@@ -2,6 +2,8 @@
 
 ## Ubuntu 14.04/16.04 ##
 
+# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-ubuntu.sh | sh
+
 # 更新软件库
 apt-get update
 
