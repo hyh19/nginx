@@ -56,19 +56,19 @@ $ apt-get install nginx
 
 ```bash
 ## Debian 7.11 ##
-$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian7.sh | bash
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian7.sh | sh
 
 ## Debian 8.9 ##
-$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian8.sh | bash
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian8.sh | sh
 
 ## Debian 9.2 ##
 $ wget https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian9.sh && sh install-nginx-debian9.sh
 
 ## Ubuntu 14.04 ##
-$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1404.sh | bash
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1404.sh | sh
 
 ## Ubuntu 16.04 ##
-$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1604.sh | bash
+$ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1604.sh | sh
 ```
 
 #### [Building nginx from Sources](http://nginx.org/en/docs/configure.html)
