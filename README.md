@@ -4,13 +4,17 @@ http://nginx.org/
 
 http://nginx.org/en/docs/
 
+https://www.nginx.com/
+
+https://www.nginx.com/resources/admin-guide/
+
 ## Introduction
 
 ### [Installing nginx](http://nginx.org/en/docs/install.html)
 
 #### [Installation on Linux](http://nginx.org/en/linux_packages.html)
 
-##### CentOS
+- ##### CentOS
 
 To set up the yum repository for RHEL/CentOS, create the file named `/etc/yum.repos.d/nginx.repo`([CentOS 6](https://gist.github.com/mrhuangyuhui/f36ba0110f60c1f1756a49d105ef292d#file-nginx-centos6-repo), [CentOS 7](https://gist.github.com/mrhuangyuhui/f36ba0110f60c1f1756a49d105ef292d#file-nginx-centos7-repo)) with the following contents:
 
@@ -24,7 +28,7 @@ enabled=1
 
 Replace “OS” with “rhel” or “centos”, depending on the distribution used, and “OSRELEASE” with “6” or “7”, for 6.x or 7.x versions, respectively.
 
-##### Debian/Ubuntu
+- ##### Debian/Ubuntu
 
 Sign the nginx packages and repository to the apt program keyring
 ```bash
@@ -57,8 +61,8 @@ $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-ngin
 ## Debian 8.9 ##
 $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian8.sh | bash
 
-## Debian 9.1 ##
-$ wget https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian9.sh && $ sh -x install-nginx-debian9.sh
+## Debian 9.2 ##
+$ wget https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-debian9.sh && $ sh install-nginx-debian9.sh
 
 ## Ubuntu 14.04 ##
 $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1404.sh | bash
@@ -67,6 +71,13 @@ $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-ngin
 $ curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-ubuntu1604.sh | bash
 ```
 
+#### [Building nginx from Sources](http://nginx.org/en/docs/configure.html)
+
+- ##### CentOS
+https://github.com/mrhuangyuhui/nginx-practice/blob/master/install-nginx-source-yum.sh
+
+- ##### Debian/Ubuntu
+https://github.com/mrhuangyuhui/nginx-practice/blob/master/install-nginx-source-apt.sh
 
 Beginner's Guide
 http://nginx.org/en/docs/beginners_guide.html
