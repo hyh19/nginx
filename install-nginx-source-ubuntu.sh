@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Ubuntu 16.04 ##
+## Ubuntu 14.04/16.04 ##
 
 # 更新软件库
 apt-get update
@@ -39,5 +39,5 @@ ln -s /usr/local/nginx/nginx-1.12.1 /usr/local/nginx/default
 echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> /etc/profile.d/nginx.sh
 
 # 提示让环境变量生效
-echo -e "Don't forget to run the command:\nsource /etc/profile.d/nginx.sh"
+echo "Don't forget to run the command: source /etc/profile.d/nginx.sh"
 
