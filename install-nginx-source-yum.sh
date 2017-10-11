@@ -1,5 +1,9 @@
 #!/bin/bash
 
+## CentOS 6.9/7.4 ##
+
+# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-yum.sh | sh
+
 # 安装必要工具
 yum install -y curl tar gcc make
 
