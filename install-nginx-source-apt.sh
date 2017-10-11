@@ -2,7 +2,7 @@
 
 ## Ubuntu 14.04/16.04/17.04, Debian 7.11 ##
 
-# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-ubuntu.sh | sh
+# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-apt.sh | sh
 
 # 更新软件库
 apt-get update
