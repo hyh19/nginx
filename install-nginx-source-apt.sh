@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Ubuntu 14.04/16.04/17.04, Debian 7.11/8.9 ##
+## Ubuntu 14.04/16.04/17.04, Debian 7.11/8.9/9.2 ##
 
 # curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-apt.sh | sh
 
@@ -14,7 +14,7 @@ apt-get install -y build-essential libtool
 apt-get install -y libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
 
 # 安装其他工具
-apt-get -y install curl tar
+apt-get -y install wget tar
 
 # 创建安装文件夹
 mkdir -p /usr/local/nginx
@@ -23,7 +23,7 @@ mkdir -p /usr/local/nginx
 useradd nginx -s /sbin/nologin -M
 
 # 下载源码包
-curl -O http://nginx.org/download/nginx-1.12.1.tar.gz
+wget http://nginx.org/download/nginx-1.12.1.tar.gz
 
 # 解压源码包
 tar xf nginx-1.12.1.tar.gz
@@ -43,4 +43,3 @@ echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> /etc/profile.d/nginx.s
 # 提示让环境变量生效
 echo "Don't forget to run the command:"
 echo 'source /etc/profile.d/nginx.sh'
-
