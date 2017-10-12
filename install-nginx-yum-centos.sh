@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-yum-centos6.sh | sh centos6
+# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-yum-centos.sh | sh centos6
+# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-yum-centos.sh | sh centos7
 
 # 安装下载工具
 yum install -y wget
