@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## CentOS 6.9 ##
+
 # curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-yum-centos6.sh | sh
 
 # 安装下载工具
