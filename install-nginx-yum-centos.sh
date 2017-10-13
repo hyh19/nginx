@@ -28,7 +28,7 @@ then
    exit 0
 fi
 
-echo "*** 参数错误：脚本参数只能是 centos6 或 centos7 ***"
+echo "运行脚本方法：./${0} centos6 或 ./${0} centos7，参数只能是 centos6 或 centos7"
 
 # 安装 nginx
 # yum install -y nginx
