@@ -18,6 +18,7 @@ function down_repo_file()
 # 打印脚本的使用方法
 function print_script_usage() {
    echo "脚本的使用方法：./${0} centos6 或 ./${0} centos7"
+   exit 1
 }
 
 if [ "${#}" -eq 1 ]
@@ -26,14 +27,11 @@ then
       centos6 | centos7)
          repo_url="${repo_url}nginx-${1}.repo"
          down_repo_file
-         ;;
-      *)
-         echo "*** 脚本参数错误 ***"
-         ;;
+         exit 0
    esac
-   
-   
 fi
+
+print_script_usage
 
 # 安装 nginx
 # yum install -y nginx
