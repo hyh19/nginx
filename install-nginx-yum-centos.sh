@@ -14,7 +14,7 @@ then
          repo_url="${repo_url}nginx-centos7.repo"
          ;;
       *)
-         echo "参数错误：脚本参数只能是 centos6 或 centos7"
+         echo "*** 参数错误：脚本参数只能是 centos6 或 centos7 ***"
          exit 1
    esac
    
