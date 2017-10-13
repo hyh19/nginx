@@ -28,8 +28,10 @@ then
          repo_url="${repo_url}nginx-${1}.repo"
          down_repo_file
          exit 0
+         ;;
       *)
          echo "错误：脚本参数不正确"
+         ;;
    esac
 fi
 
