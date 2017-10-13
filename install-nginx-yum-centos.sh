@@ -15,6 +15,13 @@ function down_repo_file()
    wget -O "${repo_file}" "${repo_url}"
 }
 
+# 安装 nginx
+function install_nginx()
+{
+   yum install -y nginx
+   nginx -V
+}
+
 # 打印脚本的使用方法
 function print_script_usage() {
    echo "脚本的使用方法：./${0} {centos6|centos7}"
@@ -26,6 +33,7 @@ then
       centos6 | centos7)
          repo_url="${repo_url}nginx-${1}.repo"
          down_repo_file
+         install_nginx
          exit 0
          ;;
       *)
@@ -39,9 +47,3 @@ else
    print_script_usage
    exit 1
 fi
-
-# 安装 nginx
-# yum install -y nginx
-
-# 打印 nginx 版本信息
-# nginx -v
