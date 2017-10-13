@@ -14,18 +14,20 @@ then
          repo_url="${repo_url}nginx-centos7.repo"
          ;;
       *)
-         echo "参数错误"
          exit 1
    esac
    
+   # 判断源配置文件是否已经存在，如果已经存在则先删除再重新下载。
    if [ -e "${repo_file}" ]
    then
-      echo "*** 源配置文件已存在，先删除。 ***"
+      echo "*** 源配置文件已经存在，先删除。 ***"
       rm -f "${repo_file}"
    fi
    echo "*** 下载源配置文件 ***"
    wget -O "${repo_file}" "${repo_url}"
 fi
+
+echo "[Usage] ${0} {centos6|centos7}"
 
 # 安装 nginx
 # yum install -y nginx
