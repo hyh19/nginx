@@ -29,13 +29,13 @@ then
          exit 0
          ;;
       *)
-         echo "错误：脚本参数不正确。"
+         echo "错误：脚本参数不正确"
          print_script_usage
          exit 1
          ;;
    esac
 else
-   echo "错误：脚本参数的数量不正确，只接受一个参数。"
+   echo "错误：脚本参数的数量不正确"
    print_script_usage
    exit 1
 fi
