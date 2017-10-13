@@ -14,7 +14,8 @@ then
          repo_url="${repo_url}nginx-centos7.repo"
          ;;
       *)
-         exit 1
+         echo "*** 脚本参数错误 ***"
+         ;;
    esac
    
    # 判断源配置文件是否已经存在，如果已经存在则先删除再重新下载。
@@ -25,7 +26,6 @@ then
    fi
    echo "*** 下载源配置文件 ***"
    wget -O "${repo_file}" "${repo_url}"
-   exit 0
 fi
 
 echo "运行脚本方法：./${0} centos6 或 ./${0} centos7，参数只能是 centos6 或 centos7"
