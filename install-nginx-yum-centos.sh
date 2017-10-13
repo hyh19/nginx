@@ -14,6 +14,7 @@ then
          repo_url="${repo_url}nginx-centos7.repo"
          ;;
       *)
+         echo "[Usage] ./${0} {centos6|centos7}"
          exit 1
    esac
    
@@ -25,9 +26,10 @@ then
    fi
    echo "*** 下载源配置文件 ***"
    wget -O "${repo_file}" "${repo_url}"
+   exit 0
 fi
 
-echo "[Usage] ${0} {centos6|centos7}"
+
 
 # 安装 nginx
 # yum install -y nginx
