@@ -12,15 +12,15 @@ then
          repo="${repo}nginx-centos6.repo"
          ;;
       "centos7")
-            repo="${repo}nginx-centos7.repo"
-            ;;
+         repo="${repo}nginx-centos7.repo"
+         ;;
       *)
          echo "参数错误"
          exit 1
    esac
    
    # 下载源配置文件
-   wget -O /etc/yum.repos.d/nginx.repo $repo_url
+   # wget -O /etc/yum.repos.d/nginx.repo $repo_url
 fi
 
 # 安装 nginx
