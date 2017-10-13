@@ -35,7 +35,7 @@ then
          ;;
    esac
 else
-   echo "错误：脚本参数的数量不正确，脚本只接受一个参数。"
+   echo "错误：脚本参数的数量不正确，只接受一个参数。"
    print_script_usage
    exit 1
 fi
