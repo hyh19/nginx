@@ -18,7 +18,6 @@ function down_repo_file()
 # 打印脚本的使用方法
 function print_script_usage() {
    echo "脚本的使用方法：./${0} centos6 或 ./${0} centos7"
-   exit 1
 }
 
 if [ "${#}" -eq 1 ]
@@ -30,14 +29,16 @@ then
          exit 0
          ;;
       *)
-         echo "错误：脚本参数不正确"
+         echo "错误：脚本参数不正确。"
+         print_script_usage
+         exit 1
          ;;
    esac
+else
+   echo "错误：脚本参数的数量不正确，脚本只接受一个参数。"
+   print_script_usage
+   exit 1
 fi
-
-echo "错误：脚本参数数量不正确"
-
-print_script_usage
 
 # 安装 nginx
 # yum install -y nginx
