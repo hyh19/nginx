@@ -14,7 +14,7 @@ then
          repo_url="${repo_url}nginx-centos7.repo"
          ;;
       *)
-         echo "[Usage] ./${0} {centos6|centos7}"
+         echo "参数错误：脚本参数只能是 centos6 或 centos7"
          exit 1
    esac
    
@@ -28,8 +28,6 @@ then
    wget -O "${repo_file}" "${repo_url}"
    exit 0
 fi
-
-
 
 # 安装 nginx
 # yum install -y nginx
