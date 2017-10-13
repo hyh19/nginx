@@ -17,7 +17,7 @@ function down_repo_file()
 
 # 打印脚本的使用方法
 function print_script_usage() {
-   echo "脚本的使用方法：./${0} {centos6 | centos7}"
+   echo "脚本的使用方法：./${0} {centos6|centos7}"
 }
 
 if [ "${#}" -eq 1 ]
