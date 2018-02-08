@@ -15,7 +15,7 @@ http://nginx.org/en/linux_packages.html
 
 ### CentOS
 
-#### epel-release
+- #### epel-release
 ```bash
 yum install epel-release -y
 yum install nginx -y
@@ -23,7 +23,7 @@ nginx -v
 nginx -V
 ```
 
-#### nginx repository
+- #### nginx repository
 
 To set up the yum repository for RHEL/CentOS, create the file named `/etc/yum.repos.d/nginx.repo` ([CentOS 6](https://github.com/mrhuangyuhui/nginx/blob/master/nginx-centos6.repo), [CentOS 7](https://github.com/mrhuangyuhui/nginx/blob/master/nginx-centos7.repo)) with the following contents:
 
@@ -64,7 +64,7 @@ enabled=1
 wget https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-yum-centos.sh && sh install-nginx-yum-centos.sh centos7
 ```
 
-- ### Debian/Ubuntu
+### Debian/Ubuntu
 
 Sign the nginx packages and repository to the apt program keyring
 ```bash
@@ -109,10 +109,10 @@ $ curl -L https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-ubuntu1
 
 ### [Building nginx from Sources](http://nginx.org/en/docs/configure.html)
 
-- ##### CentOS
+- #### CentOS
 https://github.com/mrhuangyuhui/nginx/blob/master/install-nginx-source-yum.sh
 
-- ##### Debian/Ubuntu
+- #### Debian/Ubuntu
 https://github.com/mrhuangyuhui/nginx/blob/master/install-nginx-source-apt.sh
 
 ## Tutorials
