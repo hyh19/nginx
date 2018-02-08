@@ -57,36 +57,3 @@ function install_dependencies_with_yum() {
 # 使用 apt 安装依赖
 function install_dependencies_with_apt() {
 }
-
-# 编译和安装源码
-function make_and_install() {
-    # 创建安装目录
-    mkdir -p $INSTALL_DIR
-    # 进入源码目录
-    cd $SOURCE_DIR
-
-    # 创建进程用户
-    useradd nginx -s /sbin/nologin -M
-    ./configure --user=nginx --group=nginx --prefix="${INSTALL_DIR}" --with-http_stub_status_module --with-http_ssl_module
-    make
-    make install
-}
-
-# 配置二进制文件路径
-function config_binary_path() {
-    echo "${INSTALL_ROOT}/${SOFTWARE_NAME}/bin" > $SOFTWARE_PROFILE
-}
-
-# 进入工作目录
-cd $WORKING_DIR
-
-# 下载判断发行版本的脚本
-rm -f $CHECK_SYS_SCRIPT_SAVE_PATH
-wget -O $CHECK_SYS_SCRIPT_SAVE_PATH $CHECK_SYS_SCRIPT_DOWNLOAD_URL
-
-if [ -e "$CHECK_SYS_SCRIPT_SAVE_PATH" ]; then
-    . $CHECK_SYS_SCRIPT_SAVE_PATH
-else
-    echo "[ERROR] Download ${CHECK_SYS_SCRIPT_NAME} failed."
-    exit 1
-fi
