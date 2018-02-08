@@ -53,3 +53,7 @@ function install_dependencies_with_yum() {
     yum install -y gcc make
     yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
 }
+
+# 使用 apt 安装依赖
+function install_dependencies_with_apt() {
+}
