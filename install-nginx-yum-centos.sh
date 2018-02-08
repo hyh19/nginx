@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 # nginx 软件源配置文件的下载地址
-repo_url="https://github.com/mrhuangyuhui/nginx/raw/master/"
+REPO_DOWNLOAD_URL="https://github.com/mrhuangyuhui/nginx/raw/master/"
 
 # nginx 软件源配置文件的保存路径
-repo_file="/etc/yum.repos.d/nginx.repo"
+REPO_SAVE_PATH="/etc/yum.repos.d/nginx.repo"
 
 # 下载源配置文件
 function down_repo_file()
 {
    # 如果源配置文件已经存在则删除
-   if [ -e "${repo_file}" ]
+   if [ -e "${REPO_SAVE_PATH}" ]
    then
-      rm -f "${repo_file}"
+      rm -f "${REPO_SAVE_PATH}"
    fi
-   wget -O "${repo_file}" "${repo_url}"
+   wget -O "${REPO_SAVE_PATH}" "${REPO_DOWNLOAD_URL}"
 }
 
 # 安装 nginx
@@ -33,7 +33,7 @@ if [ "${#}" -eq 1 ]
 then
    case "${1}" in
       centos6 | centos7)
-         repo_url="${repo_url}nginx-${1}.repo"
+         REPO_DOWNLOAD_URL="${REPO_DOWNLOAD_URL}nginx-${1}.repo"
          down_repo_file
          install_nginx
          exit 0
