@@ -76,3 +76,17 @@ function make_and_install() {
 function config_binary_path() {
     echo "${INSTALL_ROOT}/${SOFTWARE_NAME}/bin" > $SOFTWARE_PROFILE
 }
+
+# 进入工作目录
+cd $WORKING_DIR
+
+# 下载判断发行版本的脚本
+rm -f $CHECK_SYS_SCRIPT_SAVE_PATH
+wget -O $CHECK_SYS_SCRIPT_SAVE_PATH $CHECK_SYS_SCRIPT_DOWNLOAD_URL
+
+if [ -e "$CHECK_SYS_SCRIPT_SAVE_PATH" ]; then
+    . $CHECK_SYS_SCRIPT_SAVE_PATH
+else
+    echo "[ERROR] Download ${CHECK_SYS_SCRIPT_NAME} failed."
+    exit 1
+fi
