@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# nginx 源配置文件下载地址
-repo_url="https://github.com/mrhuangyuhui/nginx-practice/raw/master/"
+# nginx 软件源配置文件的下载地址
+repo_url="https://github.com/mrhuangyuhui/nginx/raw/master/"
+
+# nginx 软件源配置文件的保存路径
 repo_file="/etc/yum.repos.d/nginx.repo"
 
 # 下载源配置文件
