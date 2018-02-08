@@ -56,4 +56,5 @@ function install_dependencies_with_yum() {
 
 # 使用 apt 安装依赖
 function install_dependencies_with_apt() {
+    echo "Hello World"
 }
