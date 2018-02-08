@@ -90,13 +90,3 @@ else
     echo "[ERROR] Download ${CHECK_SYS_SCRIPT_NAME} failed."
     exit 1
 fi
-
-# 安装依赖
-if CHECK_SYS_SCRIPT_SAVE_PATH "packageManager" "yum"; then
-    install_dependencies_with_yum
-elif CHECK_SYS_SCRIPT_SAVE_PATH "packageManager" "apt"; then
-    install_dependencies_with_apt
-else
-    echo "[ERROR] Not supported distro."
-    exit 1
-fi
