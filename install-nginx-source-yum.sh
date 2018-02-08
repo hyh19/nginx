@@ -1,42 +1,137 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-## CentOS 6.9/7.4 ##
+# 工作目录
+WORKING_DIR=/tmp
 
-# curl -L https://github.com/mrhuangyuhui/nginx-practice/raw/master/install-nginx-source-yum.sh | sh
+# 软件名称
+SOFTWARE_NAME=nginx
 
-# 安装编译工具
-yum install -y gcc make
+# 软件版本
+SOFTWARE_VERSION=1.12.1
 
-# 安装依赖库
-yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
+# 源码包名称
+ARCHIVE_NAME="${SOFTWARE_NAME}-${SOFTWARE_VERSION}.tar.gz"
 
-# 安装其他工具
-yum install -y wget tar
+# 源码包下载地址
+ARCHIVE_DOWNLOAD_URL="http://nginx.org/download/${ARCHIVE_NAME}"
 
-# 创建安装文件夹
-mkdir -p /usr/local/nginx
+# 源码包解压后目录名称
+SOURCE_DIR_NAME="${SOFTWARE_NAME}-${SOFTWARE_VERSION}"
 
-# 创建进程用户
-useradd nginx -s /sbin/nologin -M
+# 源码包保存路径
+ARCHIVE_SAVE_PATH="${WORKING_DIR}/${ARCHIVE_NAME}"
+
+# 源码包解压后所在目录
+SOURCE_DIR="${WORKING_DIR}/${SOURCE_DIR_NAME}"
+
+# 安装目录的根目录（子目录对应不同版本）
+INSTALL_ROOT="/usr/local/${SOFTWARE_NAME}"
+
+# 安装目录（对应不同版本）
+INSTALL_DIR="${INSTALL_ROOT}/${SOFTWARE_NAME}-${SOFTWARE_VERSION}"
+
+# 当前使用版本的符号链接
+CURRENT_VERSION="${INSTALL_ROOT}/current"
+
+# PATH 环境变量配置文件
+SOFTWARE_PROFILE="/etc/profile.d/${SOFTWARE_NAME}.sh"
+
+########################################
+#### 判断 Linux 发行版本的脚本（第三方）
+########################################
+# 脚本名称
+CHECK_SYS_SCRIPT_NAME="check_sys.sh"
+# 脚本下载地址
+CHECK_SYS_SCRIPT_DOWNLOAD_URL="https://github.com/mrhuangyuhui/shell/raw/snippets/${CHECK_SYS_SCRIPT_NAME}"
+# 脚本保存路径
+CHECK_SYS_SCRIPT_SAVE_PATH="${WORKING_DIR}/${CHECK_SYS_SCRIPT_NAME}"
+
+# 使用 yum 安装依赖
+function install_dependencies_with_yum() {
+    yum install epel-release -y
+    yum install -y wget tar
+    yum install -y gcc make
+    yum install -y pcre pcre-devel openssl openssl-devel zlib zlib-devel
+}
+
+# 使用 apt 安装依赖
+function install_dependencies_with_apt() {
+    # 
+}
+
+# 编译和安装源码
+function make_and_install() {
+    # 创建安装目录
+    mkdir -p $INSTALL_DIR
+    # 进入源码目录
+    cd $SOURCE_DIR
+
+    # 创建进程用户
+    useradd nginx -s /sbin/nologin -M
+    ./configure --user=nginx --group=nginx --prefix="${INSTALL_DIR}" --with-http_stub_status_module --with-http_ssl_module
+    make
+    make install
+}
+
+# 配置二进制文件路径
+function config_binary_path() {
+    echo "${INSTALL_ROOT}/${SOFTWARE_NAME}/bin" > $SOFTWARE_PROFILE
+}
+
+# 进入工作目录
+cd $WORKING_DIR
+
+# 下载判断发行版本的脚本
+rm -f $CHECK_SYS_SCRIPT_SAVE_PATH
+wget -O $CHECK_SYS_SCRIPT_SAVE_PATH $CHECK_SYS_SCRIPT_DOWNLOAD_URL
+
+if [ -e "$CHECK_SYS_SCRIPT_SAVE_PATH" ]; then
+    . $CHECK_SYS_SCRIPT_SAVE_PATH
+else
+    echo "[ERROR] Download ${CHECK_SYS_SCRIPT_NAME} failed."
+    exit 1
+fi
+
+# 安装依赖
+if CHECK_SYS_SCRIPT_SAVE_PATH "packageManager" "yum"; then
+    install_dependencies_with_yum
+elif CHECK_SYS_SCRIPT_SAVE_PATH "packageManager" "apt"; then
+    install_dependencies_with_apt
+else
+    echo "[ERROR] Not supported distro."
+    exit 1
+fi
 
 # 下载源码包
-wget http://nginx.org/download/nginx-1.12.1.tar.gz
+if [ ! -e "$ARCHIVE_SAVE_PATH" ]; then
+    wget -O $ARCHIVE_SAVE_PATH $ARCHIVE_DOWNLOAD_URL
+fi
+
+# 下载失败，不再继续。
+if [ ! -e "$ARCHIVE_SAVE_PATH" ]; then
+    echo "[ERROR] Download ${ARCHIVE_NAME} failed."
+    exit 1
+fi
+
+# 备份旧的源码目录
+if [ -d "$SOURCE_DIR" ]; then
+    mv $SOURCE_DIR "${SOURCE_DIR}-$(date +%Y%m%d%H%M%S)"
+fi
+
+# 备份旧的安装目录
+if [ -d "$INSTALL_DIR" ]; then
+    mv $INSTALL_DIR "${INSTALL_DIR}-$(date +%Y%m%d%H%M%S)"
+fi
 
 # 解压源码包
-tar xf nginx-1.12.1.tar.gz
-cd nginx-1.12.1
+tar zxvf $ARCHIVE_SAVE_PATH
 
-# 开始编译安装
-./configure --user=nginx --group=nginx --prefix=/usr/local/nginx/nginx-1.12.1 --with-http_stub_status_module --with-http_ssl_module
-make
-make install
+# 开始编译和安装
+make_and_install
 
-# 创建符号链接
-ln -s /usr/local/nginx/nginx-1.12.1 /usr/local/nginx/default
+# 配置二进制文件路径
+config_binary_path
 
-# 修改 PATH 环境变量
-echo 'export PATH=$PATH:/usr/local/nginx/default/sbin' >> /etc/profile.d/nginx.sh
-
-# 提示让环境变量生效
-echo "Don't forget to run the command:"
-echo 'source /etc/profile.d/nginx.sh'
+echo "################################################################################"
+echo "# Open a new terminal or enter: source ${SOFTWARE_PROFILE}"
+echo "################################################################################"
