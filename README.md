@@ -1,12 +1,164 @@
-# Nginx
+# Nginx Manual
 
 http://nginx.org/
 
 http://nginx.org/en/docs/
 
-https://www.nginx.com/
+## Commands
 
-https://www.nginx.com/resources/admin-guide/
+Start nginx
+```bash
+nginx
+```
+
+[Starting, Stopping, and Reloading Configuration](http://nginx.org/en/docs/beginners_guide.html#control)
+```bash
+# fast shutdown
+nginx -s stop
+
+# graceful shutdown
+nginx -s quit
+
+# reloading the configuration file
+nginx -s reload
+
+# reopening the log files
+nginx -s reopen
+```
+
+Test the configuration file
+```bash
+$ nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+Getting the list of all running nginx processes
+```bash
+ps -ax | grep nginx
+```
+
+Help
+```bash
+$ nginx -h
+nginx version: nginx/1.12.2
+Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+
+Options:
+  -?,-h         : this help
+  -v            : show version and exit
+  -V            : show version and configure options then exit
+  -t            : test configuration and exit
+  -T            : test configuration, dump it and exit
+  -q            : suppress non-error messages during configuration testing
+  -s signal     : send signal to a master process: stop, quit, reopen, reload
+  -p prefix     : set prefix path (default: /usr/share/nginx/)
+  -c filename   : set configuration file (default: /etc/nginx/nginx.conf)
+  -g directives : set global directives out of configuration file
+```
+
+Manual
+```bash
+man nginx
+```
+
+## Directories & Files
+
+All
+```bash
+rpm -ql nginx
+
+tree /usr/local/nginx/current
+```
+
+Configuration files
+```bash
+$ rpm -ql nginx | grep nginx.conf
+/etc/nginx/nginx.conf
+/etc/nginx/nginx.conf.default
+
+$ tree /etc/nginx
+/etc/nginx
+├── conf.d
+├── default.d
+├── nginx.conf
+├── nginx.conf.default
+```
+
+Executable files
+```bash
+$ rpm -ql nginx | grep bin
+/usr/bin/nginx-upgrade
+/usr/sbin/nginx
+```
+
+Log files
+```bash
+$ rpm -ql nginx | grep log
+/etc/logrotate.d/nginx
+/var/log/nginx
+
+$ tree /var/log/nginx
+/var/log/nginx
+├── access.log
+└── error.log
+```
+
+Web contents
+```bash
+$ rpm -ql nginx | grep html
+/usr/share/nginx/html/404.html
+/usr/share/nginx/html/50x.html
+/usr/share/nginx/html/index.html
+/usr/share/nginx/html/nginx-logo.png
+/usr/share/nginx/html/poweredby.png
+
+$ tree /usr/share/nginx/html
+/usr/share/nginx/html
+├── 404.html
+├── 50x.html
+├── index.html
+├── nginx-logo.png
+└── poweredby.png
+```
+
+Modules
+```bash
+$ rpm -ql nginx | grep module
+/usr/lib64/nginx/modules
+
+$ tree /usr/lib64/nginx/modules
+```
+
+Service
+```bash
+$ rpm -ql nginx | grep service
+/usr/lib/systemd/system/nginx.service
+```
+
+## References
+
+[Starting, Stopping, and Reloading Configuration](http://nginx.org/en/docs/beginners_guide.html#control)
+
+### Modules reference
+
+Alphabetical index of directives
+http://nginx.org/en/docs/dirindex.html
+
+Alphabetical index of variables
+http://nginx.org/en/docs/varindex.html
+
+Core functionality
+http://nginx.org/en/docs/ngx_core_module.html
+
+Module ngx_http_core_module
+http://nginx.org/en/docs/http/ngx_http_core_module.html
+
+Module ngx_http_proxy_module
+http://nginx.org/en/docs/http/ngx_http_proxy_module.html
+
+Module ngx_http_fastcgi_module
+http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html
 
 ## Installation
 
@@ -17,10 +169,7 @@ http://nginx.org/en/linux_packages.html
 
 - #### epel-release
 ```bash
-yum install epel-release -y
-yum install nginx -y
-nginx -v
-nginx -V
+yum install -y epel-release && yum install -y nginx && nginx -v
 ```
 
 - #### nginx repository
@@ -48,7 +197,7 @@ enabled=1
 ```
 
 ```bash
-wget https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-yum-centos.sh && sh install-nginx-yum-centos.sh centos6
+yum install wget -y && wget https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-yum-centos.sh && bash install-nginx-yum-centos.sh centos6
 ```
 
 CentOS 7
@@ -61,7 +210,13 @@ enabled=1
 ```
 
 ```bash
-wget https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-yum-centos.sh && sh install-nginx-yum-centos.sh centos7
+yum install wget -y && wget https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-yum-centos.sh && bash install-nginx-yum-centos.sh centos7
+```
+
+- #### Source
+
+```bash
+curl -L https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-source-yum.sh | bash
 ```
 
 ### Debian/Ubuntu
@@ -109,18 +264,12 @@ $ curl -L https://github.com/mrhuangyuhui/nginx/raw/master/install-nginx-ubuntu1
 
 ### [Building nginx from Sources](http://nginx.org/en/docs/configure.html)
 
-- #### CentOS
-https://github.com/mrhuangyuhui/nginx/blob/master/install-nginx-source-yum.sh
-
 - #### Debian/Ubuntu
 https://github.com/mrhuangyuhui/nginx/blob/master/install-nginx-source-apt.sh
 
 ## Tutorials
 
-http://nginx.org/en/docs/
-
-Beginner's Guide
-http://nginx.org/en/docs/beginners_guide.html
+[Beginner's Guide](http://nginx.org/en/docs/beginners_guide.html)
 
 Command-line parameters
 http://nginx.org/en/docs/switches.html
@@ -134,24 +283,10 @@ http://nginx.org/en/docs/http/server_names.html
 Using nginx as HTTP load balancer
 http://nginx.org/en/docs/http/load_balancing.html
 
-## References
+https://www.nginx.com/
 
-### Modules reference
+https://www.nginx.com/resources/admin-guide/
 
-Alphabetical index of directives
-http://nginx.org/en/docs/dirindex.html
 
-Alphabetical index of variables
-http://nginx.org/en/docs/varindex.html
 
-Core functionality
-http://nginx.org/en/docs/ngx_core_module.html
 
-Module ngx_http_core_module
-http://nginx.org/en/docs/http/ngx_http_core_module.html
-
-Module ngx_http_proxy_module
-http://nginx.org/en/docs/http/ngx_http_proxy_module.html
-
-Module ngx_http_fastcgi_module
-http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html
