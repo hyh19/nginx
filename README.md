@@ -1,14 +1,23 @@
-# Nginx Manual
+# [Nginx Manual](https://github.com/mrhuangyuhui/nginx)
 
 http://nginx.org/
 
 http://nginx.org/en/docs/
 
+http://hg.nginx.org/nginx/
+
+https://github.com/nginx/nginx
+
 ## Commands
 
-Start nginx
+Starting nginx
 ```bash
-nginx
+nginx && ps -ax | grep nginx
+```
+
+Getting the list of all running nginx processes
+```bash
+ps -ax | grep nginx
 ```
 
 [Starting, Stopping, and Reloading Configuration](http://nginx.org/en/docs/beginners_guide.html#control)
@@ -26,16 +35,11 @@ nginx -s reload
 nginx -s reopen
 ```
 
-Test the configuration file
+Testing the configuration file
 ```bash
 $ nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
-```
-
-Getting the list of all running nginx processes
-```bash
-ps -ax | grep nginx
 ```
 
 Help
@@ -71,7 +75,7 @@ rpm -ql nginx
 tree /usr/local/nginx/current
 ```
 
-Configuration files
+Configuration
 ```bash
 $ rpm -ql nginx | grep nginx.conf
 /etc/nginx/nginx.conf
@@ -85,14 +89,14 @@ $ tree /etc/nginx
 ├── nginx.conf.default
 ```
 
-Executable files
+Executable
 ```bash
 $ rpm -ql nginx | grep bin
 /usr/bin/nginx-upgrade
 /usr/sbin/nginx
 ```
 
-Log files
+Log
 ```bash
 $ rpm -ql nginx | grep log
 /etc/logrotate.d/nginx
@@ -136,17 +140,38 @@ $ rpm -ql nginx | grep service
 /usr/lib/systemd/system/nginx.service
 ```
 
+## Configuration
+
+```bash
+$ rpm -ql nginx | grep nginx.conf
+/etc/nginx/nginx.conf
+/etc/nginx/nginx.conf.default
+
+$ tree /etc/nginx
+/etc/nginx
+├── conf.d
+├── default.d
+├── nginx.conf
+├── nginx.conf.default
+```
+
+[Configuration File’s Structure](http://nginx.org/en/docs/beginners_guide.html#conf_structure)
+
+[Serving Static Content](http://nginx.org/en/docs/beginners_guide.html#static)
+
 ## References
 
-[Starting, Stopping, and Reloading Configuration](http://nginx.org/en/docs/beginners_guide.html#control)
+### [Alphabetical index of directives](http://nginx.org/en/docs/dirindex.html)
 
-### Modules reference
+[http](http://nginx.org/en/docs/http/ngx_http_core_module.html#http) \
+[include](http://nginx.org/en/docs/ngx_core_module.html#include) \
+[listen (ngx_http_core_module)](http://nginx.org/en/docs/http/ngx_http_core_module.html#listen) \
+[location](http://nginx.org/en/docs/http/ngx_http_core_module.html#location) \
+[server (ngx_http_core_module)](http://nginx.org/en/docs/http/ngx_http_core_module.html#server) \
+[server_name (ngx_http_core_module)](http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name)
 
-Alphabetical index of directives
-http://nginx.org/en/docs/dirindex.html
+### [Alphabetical index of variables](http://nginx.org/en/docs/varindex.html)
 
-Alphabetical index of variables
-http://nginx.org/en/docs/varindex.html
 
 Core functionality
 http://nginx.org/en/docs/ngx_core_module.html
